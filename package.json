@@ -1,0 +1,9 @@
+{
+    "name": "Custom Axis Provisioning",
+    "description": "Template to create custom provisioning",
+    "version": "1.0.0",
+    "private": false,
+    "dependencies": {
+        "node-red-contrib-axis-com": "~1.7.0",
+    }
+}
