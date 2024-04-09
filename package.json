@@ -1,9 +1,28 @@
 {
-    "name": "Custom Axis Provisioning",
-    "description": "Template to create custom provisioning",
-    "version": "1.0.0",
-    "private": false,
-    "dependencies": {
-        "node-red-contrib-axis-com": "~1.7.0",
-    }
+	"name": "node-red-subflow-axis-provisioning",
+	"version": "1.0.0",
+	"description": "Axis device staging and mass configuration",
+	"license": "MIT",
+	"keywords": ["node-red","Axis","Provisioning"],
+    "author": {
+      "name": "Fred Juhlin",
+      "email": "fred.juhlin@gmail.com"
+    },
+	"repository": {"type": "git","url": "git+https://github.com/pandosme/node-red-subflow-axis-provisioning.git"},
+	"bugs": {"url": "https://github.com/pandosme/node-red-subflow-axis-provisioning/issues"},
+	"homepage": "https://github.com/pandosme/node-red-subflow-axis-provisioning#readme",
+	"node-red": {
+		"nodes": {
+			"Axis Provisioning": "axis-provisioning.js"
+		},
+		"dependencies": [
+			"node-red-contrib-axis-com"
+		]	  
+	},
+	"dependencies": {
+		"node-red-contrib-axis-com": "~1.7.0"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
 }
