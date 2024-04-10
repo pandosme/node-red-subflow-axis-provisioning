@@ -241,6 +241,9 @@ msg.config.vapix = [
 
 # Change log
 
+### 1.1.1
+- Fixed a flaw in the example code
+
 ### 1.1.0
 - Adjust config.time to support ntp server
 - Added support for generic VAPIX request
