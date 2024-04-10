@@ -12,6 +12,7 @@
 	"bugs": {"url": "https://github.com/pandosme/node-red-subflow-axis-provisioning/issues"},
 	"homepage": "https://github.com/pandosme/node-red-subflow-axis-provisioning#readme",
 	"node-red": {
+		"version": ">=3.0.0",
 		"nodes": {
 			"Axis Provisioning": "axis-provisioning.js"
 		},
@@ -20,7 +21,7 @@
 		]	  
 	},
 	"dependencies": {
-		"node-red-contrib-axis-com": "~1.7.0"
+		"node-red-contrib-axis-com": "^1.8.1"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
