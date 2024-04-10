@@ -1,8 +1,8 @@
 # Axis Device Provisioning
-This is a subflow published as an Node-RED node that is used to simplify multi-device provisioning/staging and massconfiguration when it is not possible to use [AXIS ADM](https://www.axis.com/support/tools/axis-device-manager) or [ADMx](https://www.axis.com/products/axis-device-manager-extend).
+This is a subflow published as an Node-RED node that is used to simplify multi-device provisioning/staging and mass-configuration when it is not possible to use [AXIS ADM](https://www.axis.com/support/tools/axis-device-manager) or [ADMx](https://www.axis.com/products/axis-device-manager-extend).
 
 ## Usage
-You must import/update [node-red-contrib-axis-com](https://flows.nodered.org/node/node-red-contrib-axis-com) as this subflow uses it.  
+You must import/update [node-red-contrib-axis-com](https://flows.nodered.org/node/node-red-contrib-axis-com) as this subflow depnds on it.  
 <br/>
 The subflow requires two input properties:
 1. msg.config
@@ -10,13 +10,15 @@ The subflow requires two input properties:
 
 You can import a [Template Flow](https://github.com/pandosme/CamFlows/blob/master/flows/Provisioning%20Template.json) as a starting point, example and inspiration.
 
-There are three outputs
+There are three outputs:
 1. Status: A message when each configuration in a device is set
 2. Complete: When a device is configured
 3. Error: A message on every error that may occur
 
+
 # Example of msg.inventory
 A list of devices that will be provisioned.  If static is set it will set static IPv4 address.
+
 ```
 msg.invenetory = [
     {
@@ -236,3 +238,12 @@ msg.config.vapix = [
   }    
 ]
 ```
+
+# Change log
+
+### 1.1.0
+- Adjust config.time to support ntp server
+- Added support for generic VAPIX request
+
+### 1.0.0
+- Initial commit
