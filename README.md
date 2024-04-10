@@ -1,7 +1,19 @@
-# Input
-msg.config
-msg.inventory
+# Axis Device Provisioning
+This is a subflow published as an Node-RED node that is used to simplify multi-device provisioning/staging and massconfiguration when it is not possible to use [AXIS ADM](https://www.axis.com/support/tools/axis-device-manager) or [ADMx](https://www.axis.com/products/axis-device-manager-extend).
 
+## Usage
+You must import/update [node-red-contrib-axis-com](https://flows.nodered.org/node/node-red-contrib-axis-com) as this subflow uses it.  
+<br/>
+The subflow requires two input properties:
+1. msg.config
+2. msg.inventory
+
+You can import a [Template Flow](https://github.com/pandosme/CamFlows/blob/master/flows/Provisioning%20Template.json) as a starting point, example and inspiration.
+
+There are three outputs
+1. Status: A message when each configuration in a device is set
+2. Complete: When a device is configured
+3. Error: A message on every error that may occur
 
 # Example of msg.inventory
 A list of devices that will be provisioned.  If static is set it will set static IPv4 address.
@@ -34,12 +46,11 @@ msg.invenetory = [
 
 
 # Example msg.config
-The config holds all configuration. You can remove properties that you do not want or set them false.  Values with empty data will not be commited to the provisioning.
+The config holds all configuration. You can remove properties that you do not want or set them to false.  Values with empty data will not be commited to the provisioning nor will they produce an error.
 
 
 ## accounts
-Up to three accounts can be set.  The first is the main account that will be used for all configurations.
-If camera is factory default, the device will be initiated with the main account.
+Up to three accounts can be set.  The first account is the main account that will be used for all configurations.  This means that the device must have this user/password. If the device is at factory default state, the device will be initiated with the main account.
 
 ``` 
 msg.config.accounts = [
@@ -61,11 +72,15 @@ msg.config.accounts = [
 ]
 ``` 
 
-## timezone
-Set the device timezone.  Lookup on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+## time
+Set the device timezone and NTP server.  Lookup on https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 ``` 
-msg.config.timezone = "Europe/Stockholm"
+msg.config.time: {
+    timezone: "Europe/Stockholm",
+    ntp: ["ntp.pool.org"]
+}
+
 ``` 
 
 ## zipstream 
@@ -202,5 +217,22 @@ msg.config.acap = [
 [OPTIONAL]        
         "config": null
     }
+]
+```
+## Vapix
+It is possible to add VAPIX API request for settings not supported in the config.
+The VAPIX response is available in the status output wiht msg.response.
+
+```
+msg.config.vapix = [
+  {
+    "method": "get",
+    "cgi": "/axis-cgi/param.cgi?action=update&ImageSource.I0.Color=50"
+  },
+  {
+    "method": "post",
+     "cgi": "/axis-cgi/basicdeviceinfo.cgi",
+     "body": "{\"apiVersion\": \"1.0\",\"context\":\"Node-RED\",\"method\": \"getAllProperties\"}"
+  }    
 ]
 ```
