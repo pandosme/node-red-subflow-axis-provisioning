@@ -1,3 +1,62 @@
+{
+	"id": "6d42dc07fde7a1cc",
+	"type": "subflow",
+	"name": "Provision Axis Devices",
+	"info": "",
+	"category": "",
+	"in": [
+		{
+			"x": 160,
+			"y": 260,
+			"wires": [
+				{
+					"id": "b71a276e97101779"
+				}
+			]
+		}
+	],
+	"out": [
+		{
+			"x": 1440,
+			"y": 60,
+			"wires": [
+				{
+					"id": "fd813139961b13e6",
+					"port": 0
+				}
+			]
+		},
+		{
+			"x": 1440,
+			"y": 120,
+			"wires": [
+				{
+					"id": "abb41098846a6d4f",
+					"port": 0
+				}
+			]
+		},
+		{
+			"x": 1440,
+			"y": 180,
+			"wires": [
+				{
+					"id": "3776a78bd7fa1121",
+					"port": 0
+				},
+				{
+					"id": "09eb56c5433ca289",
+					"port": 0
+				}
+			]
+		}
+	],
+	"env": [],
+	"meta": {},
+	"category": "Axis",
+	"color": "#FFCC33",
+	"icon": "font-awesome/fa-gears",
+	"flow": [
     {
         "id": "118eccf99d66c609",
         "type": "link out",
@@ -5125,3 +5184,6 @@
         "address": "",
         "protocol": "http"
     }
+	
+	]
+}

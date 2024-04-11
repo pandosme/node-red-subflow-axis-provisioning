@@ -241,6 +241,9 @@ msg.config.vapix = [
 
 # Change log
 
+### 1.1.3
+- Fixed clumsy mistake that prevented the node to run
+
 ### 1.1.2
 - Fixed flaw in Overlay
 - Added exemple flow to download ACAP
