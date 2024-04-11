@@ -241,6 +241,12 @@ msg.config.vapix = [
 
 # Change log
 
+### 1.1.2
+- Fixed flaw in Overlay
+- Added exemple flow to download ACAP
+- Added example flow to upload a CSV into Node-RED and parse it.
+  Useful for processing into msg.inventory
+
 ### 1.1.1
 - Fixed a flaw in the example code
 

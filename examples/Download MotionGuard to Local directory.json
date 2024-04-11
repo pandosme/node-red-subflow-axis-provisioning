@@ -1,0 +1,270 @@
+[
+    {
+        "id": "4ac9d7e31c24bbb0",
+        "type": "tab",
+        "label": "Download MotionGaurd tol Local directory",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d8857f8f6922c969",
+        "type": "group",
+        "z": "4ac9d7e31c24bbb0",
+        "name": "",
+        "style": {
+            "stroke": "#000000",
+            "fill": "#ffffbf",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "b564b643cfc70280",
+            "a25fc9833d0ffde4",
+            "9970fb74a7e0926e",
+            "02c25d4ec175c4f7",
+            "4e249e2e14cdd94e",
+            "206aef9ca93adb8d",
+            "c586e00f7011045e",
+            "a268f66342be9a1d"
+        ],
+        "x": 304,
+        "y": 119,
+        "w": 582,
+        "h": 262
+    },
+    {
+        "id": "7c0e092b9da119bb",
+        "type": "debug",
+        "z": "4ac9d7e31c24bbb0",
+        "name": "Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ea36ef7f4a332a87",
+        "type": "inject",
+        "z": "4ac9d7e31c24bbb0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "b564b643cfc70280"
+            ]
+        ]
+    },
+    {
+        "id": "b564b643cfc70280",
+        "type": "http request",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "aarch64",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://ftp.axis.com/pub_soft/applications/acap/MotionGuard/2_3_2/MotionGuard_2_3_2%288%29.eap",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "a25fc9833d0ffde4"
+            ]
+        ]
+    },
+    {
+        "id": "a25fc9833d0ffde4",
+        "type": "change",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filepath",
+                "pt": "msg",
+                "to": "Provisioning/MotionGuard/aarch64.eap",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "9970fb74a7e0926e"
+            ]
+        ]
+    },
+    {
+        "id": "9970fb74a7e0926e",
+        "type": "file",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "",
+        "filename": "filepath",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 780,
+        "y": 220,
+        "wires": [
+            [
+                "02c25d4ec175c4f7"
+            ]
+        ]
+    },
+    {
+        "id": "02c25d4ec175c4f7",
+        "type": "http request",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "armv7hf",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://ftp.axis.com/pub_soft/applications/acap/MotionGuard/2_3_2/MotionGuard_2_3_2%287%29.eap",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 280,
+        "wires": [
+            [
+                "4e249e2e14cdd94e"
+            ]
+        ]
+    },
+    {
+        "id": "4e249e2e14cdd94e",
+        "type": "change",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "filepath",
+                "pt": "msg",
+                "to": "Provisioning/MotionGuard/armv7hf.eap",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "206aef9ca93adb8d"
+            ]
+        ]
+    },
+    {
+        "id": "206aef9ca93adb8d",
+        "type": "file",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "",
+        "filename": "filepath",
+        "filenameType": "msg",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 780,
+        "y": 280,
+        "wires": [
+            [
+                "c586e00f7011045e"
+            ]
+        ]
+    },
+    {
+        "id": "c586e00f7011045e",
+        "type": "function",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "Generate Ouput For Config",
+        "func": "msg.filepath = \"Provisioning/MotionGuard/info.json\";\nmsg.payload = {\n    package: \"motionguard\",\n    version: \"2.3-2\",\n    armv7hf: \"Provisioning/MotionGuard/armv7hf.eap\",\n    aarch64: \"Provisioning/MotionGuard/aarch64.eap\"\n}\nmsg.payload = JSON.stringify(msg.payload,null,2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 340,
+        "wires": [
+            [
+                "7c0e092b9da119bb"
+            ]
+        ]
+    },
+    {
+        "id": "a268f66342be9a1d",
+        "type": "comment",
+        "z": "4ac9d7e31c24bbb0",
+        "g": "d8857f8f6922c969",
+        "name": "Example Download MotionGuard",
+        "info": "",
+        "x": 470,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "3900b474d5dee665",
+        "type": "comment",
+        "z": "4ac9d7e31c24bbb0",
+        "name": "Copy/Paste the ouput into the Provision Template config.acaps[]",
+        "info": "",
+        "x": 1130,
+        "y": 380,
+        "wires": []
+    }
+]
