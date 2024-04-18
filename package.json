@@ -1,6 +1,6 @@
 {
 	"name": "node-red-subflow-axis-provisioning",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"description": "Axis device staging and mass configuration",
 	"license": "MIT",
 	"keywords": ["node-red","Axis","Provisioning"],
