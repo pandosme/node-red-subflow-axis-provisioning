@@ -25,7 +25,7 @@ msg.invenetory = [
         "address":"2.3.4.5",
         "properties": {
             "name": "some-hostname",
-[OPTIONAL]
+[OPTIONAL: Set static IP address]
             "static": {  
                 "address": "1.2.3.4",
                 "router": "1.2.3.1"
@@ -33,14 +33,17 @@ msg.invenetory = [
         }
     },
     {
-        "address":"some.device.com",
+        "address":"some.fqdn.org",
         "properties": {
             "name": "some-hostname",
-[OPTIONAL]
-            "static": {
-                "address": "1.2.3.5",
-                "router": "1.2.3.1"
-            }
+[OPTIONAL: VAPIX Request only for this device]
+            "vapix:" [
+                {
+                    "method": "post",
+                    "cgi": "/axis-cgi/param.cgi",
+                    "body": "action=update&root.ImageSource.I0.Rotation=180"
+                }
+            ]
         }
     }
 ]
@@ -61,6 +64,7 @@ msg.config.accounts = [
             "password": "pass",
             "privileges": "Admin"
         },
+[OPTIONAL: Add additional accounts]
         {
             "name": "account2",
             "password": "account2",
@@ -80,6 +84,7 @@ Set the device timezone and NTP server.  Lookup on https://en.wikipedia.org/wiki
 ``` 
 msg.config.time: {
     timezone: "Europe/Stockholm",
+[OPTIONAL: Specific NTP servers]
     ntp: ["ntp.pool.org"]
 }
 
@@ -98,7 +103,7 @@ Values:
 ``` 
 msg.config.zipstream = {
     "strength": 20,
-[OPTIONAL]
+[OPTIONAL: Minimum FPS on low motion]
    "minfps": 15 
 }
 ```
