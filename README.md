@@ -241,6 +241,9 @@ msg.config.vapix = [
 
 # Change log
 
+### 1.1.5
+- Added support for device specific VAPIX requests in inventory.properties.vapix[]
+
 ### 1.1.4
 - Bug fixes
 
