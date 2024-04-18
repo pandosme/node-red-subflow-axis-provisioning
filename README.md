@@ -113,9 +113,11 @@ Set the cconnection policy
 Values are "Http","Https" & "HttpAndHttps"
 Connection poicy.  Values may be "Http","Https" & "HttpAndHttps"
 
+```
 msg.config.tls = {
         "policy": "HttpAndHttps"
 }
+```
 
 ## textOverlays
 Up to two text overlay can be set
