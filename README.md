@@ -230,7 +230,7 @@ msg.config.acap = [
 ```
 ## Vapix
 It is possible to add VAPIX API request for settings not supported in the config.
-The VAPIX response is available in the status output wiht msg.response.
+The VAPIX response is available in the status output with msg.response.
 
 ```
 msg.config.vapix = [
