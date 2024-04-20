@@ -248,6 +248,9 @@ msg.config.vapix = [
 
 # Change log
 
+### 1.1.6
+- Improved and fixed exception handling
+
 ### 1.1.5
 - Added support for device specific VAPIX requests in inventory.properties.vapix[]
 
