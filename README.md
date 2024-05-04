@@ -229,7 +229,7 @@ msg.config.acap = [
 ]
 ```
 ## Vapix
-It is possible to add VAPIX API request for settings not supported in the config.
+For settings not supported in the config JSON it is possible to add [VAPIX API request](https://www.axis.com/vapix-library/).
 The VAPIX response is available in the status output with msg.response.
 
 ```
@@ -241,12 +241,19 @@ msg.config.vapix = [
   {
     "method": "post",
      "cgi": "/axis-cgi/basicdeviceinfo.cgi",
-     "body": "{\"apiVersion\": \"1.0\",\"context\":\"Node-RED\",\"method\": \"getAllProperties\"}"
+     "body": {
+	"apiVersion": "1.0",
+	"context":"nodered",
+	"method": "getAllProperties"
+      }
   }    
 ]
 ```
 
 # Change log
+
+### 1.1.7
+- Fixed a flaw in config/vapix
 
 ### 1.1.6
 - Improved and fixed exception handling
