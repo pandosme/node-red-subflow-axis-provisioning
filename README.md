@@ -89,6 +89,15 @@ msg.config.time: {
 }
 
 ``` 
+## DNS
+Set the Dynamic Name Server.
+
+``` 
+msg.config.dns: "8.8.8.8"
+[OPTIONAL:]
+msg.config.dns: ["8.8.8.8","1.2.3.4"]
+``` 
+
 
 ## zipstream 
 Set zipstream and minimum fps
@@ -104,7 +113,7 @@ Values:
 msg.config.zipstream = {
     "strength": 20,
 [OPTIONAL: Minimum FPS on low motion]
-   "minfps": 15 
+    "minfps": 15 
 }
 ```
 
@@ -115,7 +124,7 @@ Connection poicy.  Values may be "Http","Https" & "HttpAndHttps"
 
 ```
 msg.config.tls = {
-        "policy": "HttpAndHttps"
+    "policy": "HttpAndHttps"
 }
 ```
 
@@ -143,7 +152,7 @@ Up to two text overlay can be set
 
 ## imageOverlay
 The image file needs to stored under directory Provisioning/smiley.png.
-Node-RED on Windows: C:\\Users\\user\\Provisioning\smiley.png
+Node-RED on Windows: C:\\Users\\user\\Provisioning\\smiley.png
 Node-RED on Linux: /home/user/Provisioning/smiley.png
 
 ```
@@ -167,6 +176,11 @@ Up to three ONVIF Accpunts can be set
     {
         "name": "user2",
         "password": "user2",
+        "privileges": "Administrator"
+    },
+    {
+        "name": "user3",
+        "password": "user3",
         "privileges": "Administrator"
     }
 ]
@@ -213,9 +227,7 @@ msg.config.ssh = false
 
 ## acaps
 Installs and starts ACAPS. The eap-files needs to be store on local directory.  If the device already has the ACAP installed with the version defied in payload, it will not install, just start.
-
-Configuration is planned to be supported
-
+Property "wait", will pause X seconds after ACAP started.  Use this when settings ACAP configurations witrh a VAPIX call.  The time needed dependds on ACAP.
 ```
 msg.config.acap = [
 	{
@@ -224,7 +236,7 @@ msg.config.acap = [
         "armv7hf": "Provisioning/MotionGuard/armv7hf.eap",
         "aarch64": "Provisioning/MotionGuard/aarch64.eap",
 [OPTIONAL]        
-        "config": null
+        "wait": 5
     }
 ]
 ```
@@ -235,22 +247,27 @@ The VAPIX response is available in the status output with msg.response.
 ```
 msg.config.vapix = [
   {
-    "method": "get",
-    "cgi": "/axis-cgi/param.cgi?action=update&ImageSource.I0.Color=50"
+      "method": "get",
+      "cgi": "/axis-cgi/param.cgi?action=update&ImageSource.I0.Color=50"
   },
   {
-    "method": "post",
-     "cgi": "/axis-cgi/basicdeviceinfo.cgi",
-     "body": {
-	"apiVersion": "1.0",
-	"context":"nodered",
-	"method": "getAllProperties"
+      "method": "post",
+      "cgi": "/axis-cgi/basicdeviceinfo.cgi",
+      "body": {
+          "apiVersion": "1.0",
+          "context":"nodered",
+          "method": "getAllProperties"
       }
   }    
 ]
 ```
 
 # Change log
+
+### 1.1.8
+- Added support for DNS
+- Aded more exception handling
+- Added support for "wait" in ACAP install to provide time for the ACAP to start before sending configugurations.
 
 ### 1.1.7
 - Fixed a flaw in config/vapix
